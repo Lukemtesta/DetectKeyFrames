@@ -3,11 +3,9 @@
 
 namespace pipeline
 {
-    Stage::Stage(std::string i_stage_name, SharedTree & i_tree, std::shared_ptr<Stage> i_next_stage) :
-        m_next_stage(i_next_stage),
+    Stage::Stage(std::string i_stage_name) :
         m_stage_name(i_stage_name)
     {
-        i_tree;
     };
 
 

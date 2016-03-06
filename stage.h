@@ -26,7 +26,7 @@ namespace pipeline
     class Stage
     {
         public:
-                Stage(std::string i_stage_name, SharedTree & i_tree);
+                Stage(std::string i_stage_name);
                 virtual ~Stage();
 
                 /**
@@ -35,17 +35,6 @@ namespace pipeline
                 virtual bool Run(SharedTray & i_tray);
 
         protected:
-
-                /**
-                * Get an image from the tray. Checks the tray key contains an image before returning
-                *
-                *@param[out]
-                *@param[in]     i_tray  Memory container
-                *@param[in]     i_key   Tray key for data
-                *
-                * \return True if an image was retrieved successfully
-                */
-                //bool GetImage(cv::Mat & i_img, const SharedTray & i_tray, const std::string & i_keys);
 
                 /**
                 * Arbitary function containing the bulk of the stages processing steps.
@@ -57,9 +46,6 @@ namespace pipeline
                 virtual bool Process(SharedTray & i_tray);
         
         private:
-                /// Pointer to the next stage to execute
-                std::shared_ptr<Stage> m_next_stage;
-
                 /// Stage name resembling that of the pipeline json file
                 std::string m_stage_name;
     };

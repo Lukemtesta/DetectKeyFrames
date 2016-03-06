@@ -52,8 +52,6 @@ namespace pipeline
                 */
                 template <class T> void SetVar(std::string i_key, const T & i_data)
                 {
-                    //std::lock_guard<std::mutex> lock_guard(m_mutex);
-
                     m_tray[i_key] = boost::any_cast<T>(i_data);
                 }
 
@@ -66,8 +64,6 @@ namespace pipeline
                 */
                 template <class T> boost::optional<T> GetVar(std::string i_key)
                 {
-                    //std::lock_guard<std::mutex> lock_guard(m_mutex);
-
                     auto data = m_tray.find(i_key);
 
                     if (data != m_tray.end())
@@ -94,8 +90,6 @@ namespace pipeline
                 */
                 template <class T> void SetBufferVar(std::string i_key, const T & i_data)
                 {
-                    //std::lock_guard<std::mutex> lock_guard(m_mutex);
-
                     // Create new buffer if key is empty, otherwise push back onto existing buffer
                     if (m_tray.find[i_key] == m_tray.end())
                     {
@@ -122,8 +116,6 @@ namespace pipeline
                 */
                 template <class T> boost::optional<T> GetBufferVar(std::string i_key)
                 {
-                    //auto buffer = m_tray[i_key];
-
                     if (buffer != m_tray.end())
                     {
                         try
@@ -156,9 +148,6 @@ namespace pipeline
 
                 /// Buffer capacity
                 std::size_t m_buffer_size;
-
-                /// Locking capability for multithreaded stages
-                std::mutex m_mutex;
     };
 
     typedef std::shared_ptr<Tray> SharedTray;
